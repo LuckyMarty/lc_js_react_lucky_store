@@ -14,7 +14,7 @@ export default function CartProductList({
     const site = useContext(SiteContext);
     const [quantity, setQuantity] = useState(data.cartquantity);
 
-    const handleRevove = (id) => {
+    const handleRemove = (id) => {
         const newList = site.cart.filter(item => item.id !== id);
         site.setCart(newList);
         setLocalStorage('inCart', newList);
@@ -42,7 +42,7 @@ export default function CartProductList({
             <div className="quantity">
                 <Quantity data={data} quantity={quantity} setQuantity={setQuantity} />
 
-                <div className='delete' onClick={() => handleRevove(data.id)}>delete</div>
+                <div className='delete' onClick={() => handleRemove(data.id)}>delete</div>
             </div>
 
             <div className="price">
