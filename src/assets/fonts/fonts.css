@@ -1,0 +1,14 @@
+@font-face {
+    font-family: 'CircularStd';
+    src: local('CircularStd'),
+        url('./CircularStd/CircularStd-Medium.eot'),
+        url('./CircularStd/CircularStd-Medium.eot?#iefix') format('embedded-opentype'),
+        url('./CircularStd/CircularStd-Medium.woff2') format('woff2'),
+        url('./CircularStd/CircularStd-Medium.woff') format('woff'),
+        url('./CircularStd/CircularStd-Medium.ttf') format('truetype'),
+        url('./CircularStd/CircularStd-Medium.svg#CircularStd-Medium') format('svg');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+  }
+  
