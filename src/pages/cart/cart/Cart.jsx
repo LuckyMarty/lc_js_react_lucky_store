@@ -1,17 +1,25 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { styled } from 'styled-components';
-import { formatPrice } from '../../../utils/functions';
-import { theme } from '../../../assets/theme';
+// Components
 import CartProductList from './CartProductList';
 import Total from './Total';
+// Style
+import { styled } from 'styled-components';
+import { theme } from '../../../assets/theme';
+// Context
 import SiteContext from '../../../context/SiteContext';
+// API & Functions
+import { formatPrice } from '../../../utils/functions';
+
 
 export default function Cart() {
+  // States
   const site = useContext(SiteContext);
   const [total, setTotal] = useState(0);
 
   document.title = `Cart - Lucky Store`;
 
+
+  // Handler
   useEffect(() => {
     // Calculate Total
     let totalPrice = 0;
@@ -23,6 +31,8 @@ export default function Cart() {
     } 
   }, [site.reload])
 
+
+  // Render
   return (
     <CartStyled>
       <div className="left">
@@ -70,7 +80,7 @@ const CartStyled = styled.main`
 
       .header {
         display: grid;
-        grid-template-columns: 75px 2fr 2fr 1fr;
+        grid-template-columns: 75px 2fr 1fr 1fr;
         column-gap: 25px;
         align-items: center;
 

@@ -1,20 +1,25 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+// Components
 import Quantity from '../../../components/reusable/quantity/Quantity'
+// Style
 import { styled } from 'styled-components';
-import { formatPrice, updateCartQuantity } from '../../../utils/functions';
 import { theme } from '../../../assets/theme';
+// Context
 import SiteContext from '../../../context/SiteContext';
+// API & Functions
+import { formatPrice, updateCartQuantity } from '../../../utils/functions';
 import { setLocalStorage } from '../../../utils/localStorage';
 
-export default function CartProductList({
-    data,
-    reload
-}) {
+
+export default function CartProductList({ data, reload }) {
+    // States
     const site = useContext(SiteContext);
     const [quantity, setQuantity] = useState(data.cartquantity);
 
-    const handleRevove = (id) => {
+
+    // Handler
+    const handleRemove = (id) => {
         const newList = site.cart.filter(item => item.id !== id);
         site.setCart(newList);
         setLocalStorage('inCart', newList);
@@ -26,6 +31,8 @@ export default function CartProductList({
         reload(quantity);
     }, [quantity])
 
+
+    // Render
     return (
         <CartProductListStyled>
             <div className='image'>
@@ -42,7 +49,7 @@ export default function CartProductList({
             <div className="quantity">
                 <Quantity data={data} quantity={quantity} setQuantity={setQuantity} />
 
-                <div className='delete' onClick={() => handleRevove(data.id)}>delete</div>
+                <div className='delete' onClick={() => handleRemove(data.id)}>delete</div>
             </div>
 
             <div className="price">
@@ -66,6 +73,12 @@ const CartProductListStyled = styled.div`
     &:last-child {
       border-bottom: none;
     }
+
+    > div {
+        &:nth-child(3) {
+          text-align: center;
+        }
+    }
     
     .image {
       height: 75px;
@@ -82,9 +95,11 @@ const CartProductListStyled = styled.div`
 
     .quantity {
         text-align: center;
+        margin: auto;
     }
 
     .delete {
         margin-top: 25px;
+        cursor: pointer;
     }
 `;
