@@ -33,7 +33,7 @@ export default function LoginForm({ setErrors }) {
                 if (data?.error) setErrors(data)
                 else {
                     user.setLogged(data.token);
-                    setLocalStorage('access_token', {"token": data.token, "email": data.email});
+                    setLocalStorage('access_token', data.token);
                     navigate('/account');
                 }
             })

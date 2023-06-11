@@ -13,7 +13,7 @@ export default function Login() {
 
 
   // Hooks
-  useIsLogged();
+  
 
   return (
     <AuthLayout title={"Login"} errors={errors}>
