@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Dashboard from './Dashboard'
 import Logout from './components/Logout';
 import ProductDashboard from './admin/product/ProductDashboard';
+import OrderDashboard from './admin/order/OrderDashboard';
 // Style
 import { styled } from 'styled-components';
 
@@ -14,7 +15,8 @@ export default function AdminDashboard() {
     // States
     const tabs = [
         ["", `This is your Admin Dashboard!`],
-        ["Products", <ProductDashboard />]
+        ["Products", <ProductDashboard />],
+        ["Orders", <OrderDashboard />]
     ];
 
 
