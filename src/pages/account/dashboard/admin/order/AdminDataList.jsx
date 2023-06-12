@@ -9,65 +9,46 @@ import { theme } from '../../../../../assets/theme';
 import SiteContext from '../../../../../context/SiteContext';
 // API & Functions
 import { getAllOrders } from '../../../../../api/order';
-import AdminDataList from './AdminDataList';
 
 
-export default function OrderDashboard() {
+export default function AdminDataList({ headers, children }) {
     // States
     // → Context
     const site = useContext(SiteContext);
     // → Data
-    const [orders, setOrders] = useState([])
+    const [getData, setGetData] = useState([])
 
 
     // Handler
     useEffect(() => {
         getAllOrders().then(data => {
-            setOrders(data);
+            setGetData(data);
         })
     }, [site.reload]);
-
-    const headers = ["ID", "Client", "Total", "Payment", "Status", "Date", ""];
 
 
     // Render
     return (
-        <OrderDashboardStyled>
-            <AdminDataList headers={headers}>
+        <AdminDataListStyled>
+            <div className="header">
                 {
-                    orders.map((order, index) => (
-                        <Order key={index} data={order} />
+                    headers.map((header, index) => (
+                        <div key={index}>{header}</div>
                     ))
                 }
-            </AdminDataList>
+            </div>
+            {children}
 
-
-            {/* <div className="header">
-                <div>ID</div>
-                <div>Client</div>
-                <div>Total</div>
-                <div>Payment</div>
-                <div>Status</div>
-                <div>Date</div>
-                <div>Actions</div>
-            </div> */}
-
-            {/* {
-                orders.map((order, index) => (
-                    <Order key={index} data={order} />
-                ))
-            } */}
-
-        </OrderDashboardStyled>
+        </AdminDataListStyled>
     )
 }
 
 
-const OrderDashboardStyled = styled.div`
+const AdminDataListStyled = styled.div`
     .header,
     form {
         display: grid;
-        grid-template-columns: 1fr repeat(6, 4fr);
+        grid-template-columns: 1fr repeat(${props => props.headers-1}, 4fr);
         gap: 25px;
         padding: 14px;
         border-bottom: 1px solid ${theme.colors.dark};
