@@ -11,7 +11,7 @@ import SiteContext from '../../../../../context/SiteContext';
 import { edit, remove } from '../../../../../api/product';
 
 
-export default function Order({ data }) {
+export default function Order({ data, setOrder }) {
     // States
     // → Context
     const user = useContext(UserContext);
@@ -105,6 +105,11 @@ export default function Order({ data }) {
             site.setReload(Math.random())
     }    
 
+
+    const handleView = () => {
+        setOrder(data.id)
+    }
+
     // let date = new Date();
     // console.log(date);
 
@@ -147,7 +152,8 @@ export default function Order({ data }) {
                     {data.date}
                 </div>
 
-                <div>
+                <div className='actions'>
+                    <button className='view' onClick={() => handleView()} >View</button>
                     <button className='save' onClick={() => handleSave()} >Save</button>
                     <button className='remove' onClick={() => handleRemove()} >Remove</button>
                 </div>
@@ -167,10 +173,15 @@ const OrderStyled = styled.div`
             padding: 8px;
         }
 
+        .actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 8px;
+        }
+
         button {
             width: 100%;
             padding: 8px;
-            margin: 8px 0;
             border: none;
             font-family: ${theme.fontFamily.F1};
             cursor: pointer;

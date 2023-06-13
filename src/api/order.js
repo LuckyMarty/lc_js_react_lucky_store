@@ -1,9 +1,13 @@
 export async function getAllOrders() {
     const response = await fetch('http://localhost:3000/api/order')
     const data = await response.json()
-
     return Promise.resolve(data)
+}
 
+export async function getOrderById(id) {
+    const response = await fetch(`http://localhost:3000/api/order/${id}`)
+    const data = await response.json()
+    return Promise.resolve(data)
 }
 
 

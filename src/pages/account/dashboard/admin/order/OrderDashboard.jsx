@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 // Components
+import AdminDataList from './AdminDataList';
 import Order from './Order';
+import OrderView from './OrderView';
 // Style
 import { styled } from 'styled-components';
 import { theme } from '../../../../../assets/theme';
@@ -9,7 +11,6 @@ import { theme } from '../../../../../assets/theme';
 import SiteContext from '../../../../../context/SiteContext';
 // API & Functions
 import { getAllOrders } from '../../../../../api/order';
-import AdminDataList from './AdminDataList';
 
 
 export default function OrderDashboard() {
@@ -17,7 +18,8 @@ export default function OrderDashboard() {
     // → Context
     const site = useContext(SiteContext);
     // → Data
-    const [orders, setOrders] = useState([])
+    const [orders, setOrders] = useState([]);
+    const [order, setOrder] = useState()
 
 
     // Handler
@@ -33,13 +35,20 @@ export default function OrderDashboard() {
     // Render
     return (
         <OrderDashboardStyled>
-            <AdminDataList headers={headers}>
-                {
-                    orders.map((order, index) => (
-                        <Order key={index} data={order} />
-                    ))
-                }
-            </AdminDataList>
+            {
+                !order ? (
+                    <AdminDataList headers={headers} >
+                        {
+                            orders.map((order, index) => (
+                                <Order key={index} data={order} setOrder={setOrder} />
+                            ))
+                        }
+                    </AdminDataList>
+                ) : (
+                    <OrderView order={order} back={setOrder} />
+                    // <div>Order #{order} <button onClick={() => setOrder()}>back</button></div>
+                )
+            }
         </OrderDashboardStyled>
     )
 }
