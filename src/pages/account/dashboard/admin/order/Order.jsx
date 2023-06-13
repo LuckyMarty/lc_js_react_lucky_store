@@ -62,32 +62,45 @@ export default function Order({ data }) {
     }
 
     const handleRemove = () => {
-        remove(user.logged, data.id)
-            .then(res => {
-                if (res !== 1) {
-                    toast.error(`Product ${data.id} can't be removed`, {
-                        position: "bottom-right",
-                        autoClose: 5000,
-                        hideProgressBar: true,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "dark",
-                    });
-                } else {
-                    toast.warning(`Product ${data.id} has been successfully removed`, {
-                        position: "bottom-right",
-                        autoClose: 5000,
-                        hideProgressBar: true,
-                        closeOnClick: true,
-                        pauseOnHover: true,
-                        draggable: true,
-                        progress: undefined,
-                        theme: "dark",
-                    });
-                }
+        if (confirm('Are you sure you want to remove?')) {
+            remove(user.logged, data.id)
+                .then(res => {
+                    if (res !== 1) {
+                        toast.error(`Product ${data.id} can't be removed`, {
+                            position: "bottom-right",
+                            autoClose: 5000,
+                            hideProgressBar: true,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "dark",
+                        });
+                    } else {
+                        toast.warning(`Product ${data.id} has been successfully removed`, {
+                            position: "bottom-right",
+                            autoClose: 5000,
+                            hideProgressBar: true,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "dark",
+                        });
+                    }
+                });
+        } else {
+            toast.success(`Action has been canceled`, {
+                position: "bottom-right",
+                autoClose: 5000,
+                hideProgressBar: true,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
             });
+        }
 
             site.setReload(Math.random())
     }    

@@ -40,24 +40,6 @@ export default function OrderDashboard() {
                     ))
                 }
             </AdminDataList>
-
-
-            {/* <div className="header">
-                <div>ID</div>
-                <div>Client</div>
-                <div>Total</div>
-                <div>Payment</div>
-                <div>Status</div>
-                <div>Date</div>
-                <div>Actions</div>
-            </div> */}
-
-            {/* {
-                orders.map((order, index) => (
-                    <Order key={index} data={order} />
-                ))
-            } */}
-
         </OrderDashboardStyled>
     )
 }
