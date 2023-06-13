@@ -43,7 +43,8 @@ export default function Cart() {
           <div>Product</div>
           <div></div>
           <div>Quantity</div>
-          <div>Price</div>
+          <div>Unit Price</div>
+          <div>Total Price</div>
         </div>
 
         {
@@ -80,7 +81,7 @@ const CartStyled = styled.main`
 
       .header {
         display: grid;
-        grid-template-columns: 75px 2fr 1fr 1fr;
+        grid-template-columns: 75px 2fr 1fr 1fr 1fr;
         column-gap: 25px;
         align-items: center;
 

@@ -52,6 +52,11 @@ export default function CartProductList({ data, reload }) {
                 <div className='delete' onClick={() => handleRemove(data.id)}>delete</div>
             </div>
 
+
+            <div className="unique_price">
+                {formatPrice(data.price)} €
+            </div>
+
             <div className="price">
                 {formatPrice(quantity * data.price)} €
             </div>
@@ -62,7 +67,7 @@ export default function CartProductList({ data, reload }) {
 
 const CartProductListStyled = styled.div`
     display: grid;
-    grid-template-columns: 75px 2fr 1fr 1fr;
+    grid-template-columns: 75px 2fr 1fr 1fr 1fr;
     column-gap: 25px;
 
     
