@@ -98,7 +98,7 @@ export default function Order({ data }) {
     // console.log(new Date());
     // console.log(new Date().toLocaleDateString("fr-FR", { weekday: 'long', year: 'numeric', month:'long', day: 'numeric' }));
     // console.log(new Intl.DateTimeFormat('en-US', { dateStyle: 'full', timeStyle: 'short', timeZone: 'Europe/Paris' }).format(new Date()));
-    console.log(new Intl.DateTimeFormat('en-US', { dateStyle: 'full', timeStyle: 'short', timeZone: 'Europe/Paris' }).format(Date.parse(data.date)));
+    // console.log(new Intl.DateTimeFormat('en-US', { dateStyle: 'full', timeStyle: 'short', timeZone: 'Europe/Paris' }).format(Date.parse(data.date)));
 
     // Render
     return (
