@@ -9,6 +9,7 @@ import UserContext from '../../../../../context/UserContext';
 import SiteContext from '../../../../../context/SiteContext';
 // API & Functions
 import { edit, remove } from '../../../../../api/product';
+import OrderStatus from './OrderStatus';
 
 
 export default function Order({ data, setOrder }) {
@@ -139,13 +140,7 @@ export default function Order({ data, setOrder }) {
                 </div>
 
                 <div>
-                    <select name="status" id="status">
-                        <option value="In Payment">{data.status}</option>
-                        <option value="Payment Confrimed">Payment Confrimed</option>
-                        <option value="Packages being prepared">Packages being prepared</option>
-                        <option value="Package sent">Package sent</option>
-                        <option value="Order completed">Order completed</option>
-                    </select>
+                    <OrderStatus status={status} setStatus={setStatus} />
                 </div>
 
                 <div>
