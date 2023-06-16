@@ -8,6 +8,7 @@ import { theme } from '../../../../../assets/theme';
 import SiteContext from '../../../../../context/SiteContext';
 // API & Functions
 import { getAllProduct } from '../../../../../api/product';
+import AdminDataList from '../order/AdminDataList';
 
 
 export default function Products() {
@@ -25,49 +26,26 @@ export default function Products() {
         })
     }, [site.reload]);
 
+    const headers = ["ID", "Title", "Description", "Quantity", "Price", ""];
+
+    console.log(headers.length);
 
     // Render
     return (
         <ProductsStyled>
-            <div className="header">
-                <div>ID</div>
-                <div>Title</div>
-                <div>Description</div>
-                <div>Quantity</div>
-                <div>Price</div>
-                <div></div>
-            </div>
-            {
-                products.map((product, index) => (
-                    <Product key={index} data={product} />
-                ))
-            }
+            <AdminDataList headers={headers}>
+
+                {
+                    products.map((product, index) => (
+                        <Product key={index} data={product} />
+                    ))
+                }
+            </AdminDataList>
         </ProductsStyled>
     )
 }
 
 
 const ProductsStyled = styled.div`
-    .header,
-    form {
-        display: grid;
-        grid-template-columns: 1fr repeat(4, 4fr) 1fr;
-        gap: 25px;
-        padding: 14px;
-        border-bottom: 1px solid ${theme.colors.dark};
-    }
 
-    .header {
-        font-size: ${theme.fonts.P2}
-    }
-
-    > div:not(.header) {
-        &:nth-child(even) {
-            background-color: ${theme.colors.greyLight}
-        }
-
-        &:last-child form {
-            border: none;
-        }
-    }
 `;
