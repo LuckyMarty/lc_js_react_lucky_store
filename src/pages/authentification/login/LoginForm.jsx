@@ -34,6 +34,7 @@ export default function LoginForm({ setErrors }) {
                 else {
                     user.setLogged(data.token);
                     setLocalStorage('access_token', data.token);
+                    setLocalStorage('user_id', data.id);
                     navigate('/account');
                 }
             })

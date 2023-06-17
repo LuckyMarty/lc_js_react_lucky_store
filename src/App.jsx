@@ -26,6 +26,7 @@ import { getLocalStorage } from './utils/localStorage'
 import PrivateRoutes from './utils/PrivateRoutes'
 import AdminRoutes from './utils/AdminRoutes'
 import LoggedRoutes from './utils/LoggedRoutes'
+import Confirmation from './pages/cart/Confirmation'
 
 
 // Local Data
@@ -78,6 +79,7 @@ function App() {
             {/* User Logged */}
             <Route element={<PrivateRoutes />}>
               <Route path='/account' element={<UserDashboard />} />
+              <Route path='/confirmation' element={<Confirmation />} />
             </Route>
 
             {/* Admin Panel */}

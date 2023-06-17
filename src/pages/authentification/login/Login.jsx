@@ -12,9 +12,7 @@ export default function Login() {
   const [errors, setErrors] = useState(false)
 
 
-  // Hooks
-  
-
+  // Render
   return (
     <AuthLayout title={"Login"} errors={errors}>
       <LoginStyled>
