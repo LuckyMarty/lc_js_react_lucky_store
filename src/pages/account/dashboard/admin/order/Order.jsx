@@ -12,7 +12,7 @@ import { edit, remove } from '../../../../../api/order';
 import OrderStatus from './OrderStatus';
 
 
-export default function Order({ data, setOrder }) {
+export default function Order({ data, setOrder, admin }) {
     // States
     // → Context
     const user = useContext(UserContext);
@@ -111,13 +111,6 @@ export default function Order({ data, setOrder }) {
         setOrder(data.id)
     }
 
-    // let date = new Date();
-    // console.log(date);
-
-    // console.log(new Date());
-    // console.log(new Date().toLocaleDateString("fr-FR", { weekday: 'long', year: 'numeric', month:'long', day: 'numeric' }));
-    // console.log(new Intl.DateTimeFormat('en-US', { dateStyle: 'full', timeStyle: 'short', timeZone: 'Europe/Paris' }).format(new Date()));
-    // console.log(new Intl.DateTimeFormat('en-US', { dateStyle: 'full', timeStyle: 'short', timeZone: 'Europe/Paris' }).format(Date.parse(data.date)));
 
     // Render
     return (
@@ -140,7 +133,13 @@ export default function Order({ data, setOrder }) {
                 </div>
 
                 <div>
-                    <OrderStatus status={status} setStatus={setStatus} />
+                    {
+                        admin ? (
+                            <OrderStatus status={status} setStatus={setStatus} />
+                        ) : (
+                            data.status
+                        )
+                    }
                 </div>
 
                 <div>
@@ -149,12 +148,19 @@ export default function Order({ data, setOrder }) {
 
                 <div className='actions'>
                     <button className='view' onClick={() => handleView()} >View</button>
-                    <button className='save' onClick={() => handleSave()} >Save</button>
-                    <button className='remove' onClick={() => handleRemove()} >Remove</button>
+
+                    {
+                        admin && (
+                            <>
+                                <button className='save' onClick={() => handleSave()} >Save</button>
+                                <button className='remove' onClick={() => handleRemove()} >Remove</button>
+                            </>
+                        )
+                    }
                 </div>
             </form>
             <ToastContainer />
-        </OrderStyled>
+        </OrderStyled >
     )
 }
 

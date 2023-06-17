@@ -9,6 +9,7 @@ import ProductDashboard from './admin/product/ProductDashboard';
 import OrderDashboard from './admin/order/OrderDashboard';
 // Style
 import { styled } from 'styled-components';
+import AdminOrderDashboard from './admin/order/AdminOrderDashboard';
 
 
 export default function AdminDashboard() {
@@ -16,7 +17,7 @@ export default function AdminDashboard() {
     const tabs = [
         ["", `This is your Admin Dashboard!`],
         ["Products", <ProductDashboard />],
-        ["Orders", <OrderDashboard />]
+        ["Orders", <AdminOrderDashboard />]
     ];
 
 

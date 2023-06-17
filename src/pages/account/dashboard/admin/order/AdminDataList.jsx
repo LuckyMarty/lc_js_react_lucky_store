@@ -6,27 +6,10 @@ import { styled } from 'styled-components';
 import { theme } from '../../../../../assets/theme';
 // Layout
 // Context
-import SiteContext from '../../../../../context/SiteContext';
 // API & Functions
-import { getAllOrders } from '../../../../../api/order';
 
 
 export default function AdminDataList({ headers, children }) {
-    // States
-    // → Context
-    const site = useContext(SiteContext);
-    // → Data
-    const [getData, setGetData] = useState([])
-
-
-    // Handler
-    useEffect(() => {
-        getAllOrders().then(data => {
-            setGetData(data);
-        })
-    }, [site.reload]);
-
-
     // Render
     return (
         <AdminDataListStyled columns={headers.length}>

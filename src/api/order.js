@@ -10,6 +10,14 @@ export async function getOrderById(id) {
     return Promise.resolve(data)
 }
 
+export async function getOrderByUserId(id) {
+    const response = await fetch(`http://localhost:3000/api/order/user/${id}`)
+    const data = await response.json()
+    return Promise.resolve(data)
+}
+
+
+
 
 export async function edit(token, id, newData) {
     const response = await fetch(

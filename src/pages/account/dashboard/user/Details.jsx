@@ -1,16 +1,16 @@
 import React, { useContext, useState } from 'react'
 // Style
 import { styled } from 'styled-components';
-import { theme } from '../../../assets/theme';
+import { theme } from '../../../../assets/theme';
 // Layout
-import FormLayout from '../../../layout/page/authentification/FormLayout';
+import FormLayout from '../../../../layout/page/authentification/FormLayout';
 // Context
-import UserContext from '../../../context/UserContext';
-import SiteContext from '../../../context/SiteContext';
+import UserContext from '../../../../context/UserContext';
+import SiteContext from '../../../../context/SiteContext';
 // API & Functions
-import { setLocalStorage } from '../../../utils/localStorage';
-import { edit } from '../../../api/user';
-import Messages from '../../../components/reusable/Messages';
+import { setLocalStorage } from '../../../../utils/localStorage';
+import { edit } from '../../../../api/user';
+import Messages from '../../../../components/reusable/Messages';
 
 
 export default function Details({ data, token }) {

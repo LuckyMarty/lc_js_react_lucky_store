@@ -15,7 +15,7 @@ import SiteContext from '../../../../../context/SiteContext';
 import { edit, getOrderById } from '../../../../../api/order';
 import { formatPrice } from '../../../../../utils/functions';
 
-export default function OrderView({ order, back }) {
+export default function OrderView({ order, back, admin }) {
     // States
     const user = useContext(UserContext);
     const site = useContext(SiteContext);
@@ -80,7 +80,19 @@ export default function OrderView({ order, back }) {
                 <div className="left">
                     <b>Order</b>: n°{orderData?.id} <br />
                     <b>Payment Type</b>: {orderData?.payment} <br />
-                    <b>Status</b>: <OrderStatus status={status} setStatus={setStatus} onChange={true} />
+
+                    {
+                        admin ? (
+                            <>
+                                <b>Status</b>: <OrderStatus status={status} setStatus={setStatus} onChange={true} />
+                            </>
+                        ) : (
+                            <>
+                                <b>Status</b>: {orderData?.status}
+                            </>
+                        )
+                    }
+
                 </div>
 
                 <div className="right">

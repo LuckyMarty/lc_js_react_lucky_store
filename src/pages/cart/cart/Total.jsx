@@ -35,8 +35,8 @@ export default function Total({
                 if (res !== 1) {
                     alert("Something went wrong...");
                 } else if (res === 1) {
-                    site.setCart();
-                    setLocalStorage("inCart", "");
+                    site.setCart([]);
+                    setLocalStorage("inCart", []);
                     navigate("/confirmation");        
                 }
             });
