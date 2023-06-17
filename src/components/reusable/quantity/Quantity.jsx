@@ -1,14 +1,16 @@
-import React, { useState } from 'react'
+import React from 'react';
+// Components
 import QuantityButton from './QuantityButton'
+// Style
 import { styled } from 'styled-components';
+
 
 export default function Quantity({ 
     data,
     quantity,
     setQuantity 
 }) {
-
-
+    // Handler
     const handleMinus = (event) => {
         if (quantity != 1) setQuantity(quantity - 1);
     }
@@ -23,6 +25,8 @@ export default function Quantity({
         else alert("Reached Quantity Limit");
     }
 
+
+    // Render
     return (
         <QuantityStyled>
             <QuantityButton

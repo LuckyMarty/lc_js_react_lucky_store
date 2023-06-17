@@ -1,14 +1,20 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react';
+// Components
 import OrderDashboard from '../admin/order/OrderDashboard';
-import { getOrderByUserId } from '../../../../api/order';
-import { getLocalStorage } from '../../../../utils/localStorage';
+// Context
 import SiteContext from '../../../../context/SiteContext';
 import UserContext from '../../../../context/UserContext';
+// API & Functions  
+import { getOrderByUserId } from '../../../../api/order';
+import { getLocalStorage } from '../../../../utils/localStorage';
 
 
 export default function Orders() {
+    // States
+    // → Context
     const user = useContext(UserContext);
     const site = useContext(SiteContext);
+    // → Data
     const [orders, setOrders] = useState([]);
 
 
@@ -19,6 +25,8 @@ export default function Orders() {
         })
     }, [site.reload]);
 
+
+    // Render
     return (
         <OrderDashboard orders={orders} admin={false} />
     )

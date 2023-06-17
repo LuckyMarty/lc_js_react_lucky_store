@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+// Style
 import { theme } from '../../../assets/theme';
 import { styled } from 'styled-components';
 
+
 export default function FormLayout({ children }) {
+    // Render
     return (
         <FormLayoutStyled>
             {children}

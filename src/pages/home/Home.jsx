@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
+// Style
 import { css, styled } from 'styled-components';
-import { img } from './assets/img';
-import Aside from '../../layout/aside/Aside';
+// Layout
 import ContainerWithLeftSideBar from '../../layout/ContainerWithLeftSideBar';
+// Assets
+import { img } from './assets/img';
 
 
 const blocks = [];
@@ -12,12 +14,15 @@ for (let i = 1; i <= 8; i++) {
     blocks.push(<div key={i} className={content}><img src={src} /></div>);
 }
 
-export default function Home() {
 
+export default function Home() {
+    // Hook
     useEffect(() => {
         document.title = "Lucky Store"
     }, [])
 
+
+    // Render
     return (
         <ContainerWithLeftSideBar>
             <HomeStyled>
@@ -28,7 +33,6 @@ export default function Home() {
 }
 
 const HomeStyled = styled.main`
-
 .right {
     display: grid;
     grid-template-columns: repeat(4, 1fr);

@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 // Components
-import Quantity from '../../../components/reusable/quantity/Quantity'
+import Quantity from '../../../components/reusable/quantity/Quantity';
 // Style
 import { styled } from 'styled-components';
 import { theme } from '../../../assets/theme';
@@ -26,6 +26,8 @@ export default function CartProductList({ data, reload }) {
         site.setReload(newList);
     }
 
+
+    // Hook
     useEffect(() => {
         updateCartQuantity(site, data, quantity);
         reload(quantity);

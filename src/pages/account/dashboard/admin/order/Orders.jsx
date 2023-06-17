@@ -1,13 +1,11 @@
 import React from 'react';
-// Components
 // Style
 import { styled } from 'styled-components';
 import { theme } from '../../../../../assets/theme';
-// Layout
-// Context
-// API & Functions
+
 
 export default function Orders() {
+    // Render
     return (
         <OrdersStyled>
             OrdersStyled

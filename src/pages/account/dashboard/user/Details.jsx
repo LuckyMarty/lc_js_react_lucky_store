@@ -1,4 +1,6 @@
 import React, { useContext, useState } from 'react'
+// Components
+import Messages from '../../../../components/reusable/Messages';
 // Style
 import { styled } from 'styled-components';
 import { theme } from '../../../../assets/theme';
@@ -10,7 +12,6 @@ import SiteContext from '../../../../context/SiteContext';
 // API & Functions
 import { setLocalStorage } from '../../../../utils/localStorage';
 import { edit } from '../../../../api/user';
-import Messages from '../../../../components/reusable/Messages';
 
 
 export default function Details({ data, token }) {
@@ -18,11 +19,9 @@ export default function Details({ data, token }) {
     // → Context
     const user = useContext(UserContext);
     const site = useContext(SiteContext);
-
     // → Messages
     const [errors, setErrors] = useState(false);
     const [success, setSuccess] = useState(false)
-
     // → Data
     const [firstname, setFirstname] = useState(data.firstname);
     const [lastname, setLastname] = useState(data.lastname);

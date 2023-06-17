@@ -1,15 +1,21 @@
-import React, { useContext, useState } from 'react'
-import { styled } from 'styled-components';
-import FormLayout from '../../../layout/page/authentification/FormLayout';
-import { login, signup } from '../../../api/user';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+// Style
+import { styled } from 'styled-components';
+// Layout
+import FormLayout from '../../../layout/page/authentification/FormLayout';
+// Context
 import UserContext from '../../../context/UserContext';
+// API & Functions  
+import { login, signup } from '../../../api/user';
 import { setLocalStorage } from '../../../utils/localStorage';
 
-export default function SignupForm({ setErrors }) {
 
-    // Init
+export default function SignupForm({ setErrors }) {
+    // States
+    // → Context
     const user = useContext(UserContext);
+    // → Data
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [email, setEmail] = useState('');
@@ -17,7 +23,8 @@ export default function SignupForm({ setErrors }) {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [success, setSuccess] = useState(false);
 
-    // Functions
+
+    // Handler
     const handleSubmit = () => {
         event.preventDefault();
         if (password == confirmPassword) {
@@ -41,6 +48,7 @@ export default function SignupForm({ setErrors }) {
     }
 
 
+    // Render
     return (
         <FormLayout>
             {

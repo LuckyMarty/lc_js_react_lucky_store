@@ -1,15 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-// Components
 // Style
 import { styled } from 'styled-components';
 import { theme } from '../../../../../assets/theme';
-import { formatPrice } from '../../../../../utils/functions';
-// Layout
-// Context
 // API & Functions
+import { formatPrice } from '../../../../../utils/functions';
+
 
 export default function ProductList({ data }) {
+    // Render
     return (
         <ProductListStyled>
             <div className='image'>

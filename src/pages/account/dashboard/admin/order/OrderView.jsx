@@ -7,7 +7,6 @@ import OrderStatus from './OrderStatus';
 // Style
 import { styled } from 'styled-components';
 import { theme } from '../../../../../assets/theme';
-// Layout
 // Context
 import UserContext from '../../../../../context/UserContext';
 import SiteContext from '../../../../../context/SiteContext';
@@ -15,10 +14,13 @@ import SiteContext from '../../../../../context/SiteContext';
 import { edit, getOrderById } from '../../../../../api/order';
 import { formatPrice } from '../../../../../utils/functions';
 
+
 export default function OrderView({ order, back, admin }) {
     // States
+    // → Context
     const user = useContext(UserContext);
     const site = useContext(SiteContext);
+    // → Data
     const [orderData, setOrderData] = useState()
     const [status, setStatus] = useState()
 
@@ -28,8 +30,6 @@ export default function OrderView({ order, back, admin }) {
         getOrderById(user.logged, order).then(data => {
             setOrderData(data);
         });
-
-
 
         const newData = {
             id: orderData?.id,

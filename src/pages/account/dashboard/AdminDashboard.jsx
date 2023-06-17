@@ -1,15 +1,14 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // Components
+import AdminOrderDashboard from './admin/order/AdminOrderDashboard';
 import Dashboard from './Dashboard'
 import Logout from './components/Logout';
 import ProductDashboard from './admin/product/ProductDashboard';
-import OrderDashboard from './admin/order/OrderDashboard';
 // Style
 import { styled } from 'styled-components';
-import AdminOrderDashboard from './admin/order/AdminOrderDashboard';
 
 
 export default function AdminDashboard() {

@@ -1,13 +1,15 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+// Style
 import { styled } from 'styled-components';
 import { theme } from '../../../assets/theme';
+// Context
 import UserContext from '../../../context/UserContext';
-import { getLocalStorage, setLocalStorage } from '../../../utils/localStorage';
 import SiteContext from '../../../context/SiteContext';
+// API & Functions  
+import { getLocalStorage, setLocalStorage } from '../../../utils/localStorage';
 import { add } from '../../../api/order';
+
 
 export default function Total({
     subtotal,

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 // Components
 import Dashboard from './Dashboard'
@@ -13,8 +13,6 @@ import SiteContext from '../../../context/SiteContext';
 import { getLocalStorage, setLocalStorage } from '../../../utils/localStorage';
 import { data } from '../../../api/user';
 import Orders from './user/Orders';
-
-
 
 
 export default function UserDashboard() {

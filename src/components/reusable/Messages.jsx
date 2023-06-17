@@ -1,8 +1,11 @@
-import React from 'react'
+import React from 'react';
+// Style
 import { styled } from 'styled-components';
 import { theme } from '../../assets/theme';
 
+
 export default function Messages({ errors, success }) {
+    // Render
     return (
         <MessagesStyled>
             {errors && (<div className="errors">{errors}</div>)}

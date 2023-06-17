@@ -1,18 +1,26 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+// Style
 import { styled } from 'styled-components';
 import { theme } from '../../../assets/theme';
-import { Link } from 'react-router-dom';
-import { addToCart } from '../../../utils/functions';
+// Context
 import SiteContext from '../../../context/SiteContext';
+// API & Functions  
+import { addToCart } from '../../../utils/functions';
+
 
 export default function ProductCard({ data }) {
+    // States
     const site = useContext(SiteContext);
 
 
+    // Hanlder
     const handleAddToCart = (item) => {
         addToCart(site, item, 1);
     }
 
+
+    // Render
     return (
         <ProductCardStyled>
             <div className='header'>

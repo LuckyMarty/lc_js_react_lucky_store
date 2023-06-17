@@ -1,13 +1,13 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+// Style
 import { styled } from 'styled-components';
 import { theme } from '../../../assets/theme';
-import { Link } from 'react-router-dom';
 
-export default function ButtonLink({
-    label,
-    to
-}) {
+
+export default function ButtonLink({ label, to }) {
     return (
+        // Render
         <ButtonLinkStyled>
             <Link to={to}>
                 {label}

@@ -6,20 +6,12 @@ import OrderView from './OrderView';
 // Style
 import { styled } from 'styled-components';
 import { theme } from '../../../../../assets/theme';
-// Layout
-// Context
-// API & Functions
 
 
 export default function OrderDashboard({ orders, admin = true }) {
     // States
-    // → Context
-    // → Data
     const [order, setOrder] = useState()
     const headers = ["ID", "Client", "Total", "Payment", "Status", "Date", ""];
-
-
-
 
 
     // Render

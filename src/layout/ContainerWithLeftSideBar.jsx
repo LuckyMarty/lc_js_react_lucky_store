@@ -1,13 +1,16 @@
-import React from 'react'
-import { styled } from 'styled-components';
-import Header from './header/Header';
+import React from 'react';
+// Components
 import Aside from './aside/Aside';
+// Style
+import { styled } from 'styled-components';
+
 
 export default function ContainerWithLeftSideBar(
     {
         children
     }
 ) {
+    // Render
     return (
         <ContainerWithLeftSideBarStyled>
             <Aside />

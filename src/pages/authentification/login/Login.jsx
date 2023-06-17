@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+// Components
+import LoginForm from './LoginForm';
+// Style
 import { styled } from 'styled-components';
 import { theme } from '../../../assets/theme';
-import useIsLogged from '../../../hooks/useIsLogged';
-import { useState } from 'react';
-import LoginForm from './LoginForm';
-import { Link } from 'react-router-dom';
+// Layout
 import AuthLayout from '../../../layout/page/authentification/AuthLayout.jsx'
 
+
 export default function Login() {
-  // Init
+  // States
   const [errors, setErrors] = useState(false)
 
 

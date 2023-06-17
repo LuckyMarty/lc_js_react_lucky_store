@@ -1,12 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react';
-// Components
-import Order from './Order';
+import React from 'react';
 // Style
 import { styled } from 'styled-components';
 import { theme } from '../../../../../assets/theme';
-// Layout
-// Context
-// API & Functions
 
 
 export default function AdminDataList({ headers, children }) {
