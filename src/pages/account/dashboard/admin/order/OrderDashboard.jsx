@@ -20,6 +20,7 @@ export default function OrderDashboard() {
     // → Data
     const [orders, setOrders] = useState([]);
     const [order, setOrder] = useState()
+    const headers = ["ID", "Client", "Total", "Payment", "Status", "Date", ""];
 
 
     // Handler
@@ -28,8 +29,6 @@ export default function OrderDashboard() {
             setOrders(data);
         })
     }, [site.reload]);
-
-    const headers = ["ID", "Client", "Total", "Payment", "Status", "Date", ""];
 
 
     // Render
@@ -46,7 +45,6 @@ export default function OrderDashboard() {
                     </AdminDataList>
                 ) : (
                     <OrderView order={order} back={setOrder} />
-                    // <div>Order #{order} <button onClick={() => setOrder()}>back</button></div>
                 )
             }
         </OrderDashboardStyled>
@@ -55,26 +53,5 @@ export default function OrderDashboard() {
 
 
 const OrderDashboardStyled = styled.div`
-    .header,
-    form {
-        display: grid;
-        grid-template-columns: 1fr repeat(6, 4fr);
-        gap: 25px;
-        padding: 14px;
-        border-bottom: 1px solid ${theme.colors.dark};
-    }
-
-    .header {
-        font-size: ${theme.fonts.P2}
-    }
-
-    > div:not(.header) {
-        &:nth-child(even) {
-            background-color: ${theme.colors.greyLight}
-        }
-
-        &:last-child form {
-            border: none;
-        }
-    }
+  
 `;

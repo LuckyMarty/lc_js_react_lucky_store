@@ -1,18 +1,24 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // Components
+import ProductList from './ProductList';
+import OrderStatus from './OrderStatus';
 // Style
 import { styled } from 'styled-components';
-import { getOrderById } from '../../../../../api/order';
 import { theme } from '../../../../../assets/theme';
-import ProductList from './ProductList';
-import { formatPrice } from '../../../../../utils/functions';
-import OrderStatus from './OrderStatus';
 // Layout
 // Context
+import UserContext from '../../../../../context/UserContext';
+import SiteContext from '../../../../../context/SiteContext';
 // API & Functions
+import { edit, getOrderById } from '../../../../../api/order';
+import { formatPrice } from '../../../../../utils/functions';
 
 export default function OrderView({ order, back }) {
-
+    // States
+    const user = useContext(UserContext);
+    const site = useContext(SiteContext);
     const [orderData, setOrderData] = useState()
     const [status, setStatus] = useState()
 
@@ -21,10 +27,51 @@ export default function OrderView({ order, back }) {
     useEffect(() => {
         getOrderById(order).then(data => {
             setOrderData(data);
-        })
-    }, []);
+        });
 
 
+
+        const newData = {
+            id: orderData?.id,
+            id_user: orderData?.id_user,
+            products: orderData?.products,
+            total: orderData?.total,
+            payment: orderData?.payment,
+            status
+        }
+
+        edit(user.logged, orderData?.id, newData)
+            .then(res => {
+                if (res !== 1) {
+                    toast.error(`Order ${orderData?.id} can't be saved`, {
+                        position: "bottom-right",
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+                } else if (res === 1) {
+                    toast.success(`Order ${orderData?.id} has been successfully saved`, {
+                        position: "bottom-right",
+                        autoClose: 5000,
+                        hideProgressBar: true,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                    });
+                }
+            });
+
+        site.setReload(Math.random());
+    }, [status]);
+
+
+    // Render
     return (
         <OrderViewStyled>
             <button onClick={() => back()}>back</button>
@@ -33,7 +80,7 @@ export default function OrderView({ order, back }) {
                 <div className="left">
                     <b>Order</b>: n°{orderData?.id} <br />
                     <b>Payment Type</b>: {orderData?.payment} <br />
-                    <b>Status</b>: <OrderStatus status={status} setStatus={setStatus} />
+                    <b>Status</b>: <OrderStatus status={status} setStatus={setStatus} onChange={true} />
                 </div>
 
                 <div className="right">
@@ -52,7 +99,7 @@ export default function OrderView({ order, back }) {
 
 
             {
-                orderData && JSON.parse(orderData.products)?.map((product, index) => (
+                orderData && JSON.parse(orderData?.products)?.map((product, index) => (
                     <ProductList key={index} data={product} />
                 ))
             }

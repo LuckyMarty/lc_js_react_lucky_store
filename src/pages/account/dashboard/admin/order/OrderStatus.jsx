@@ -2,32 +2,26 @@ import React from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function OrderStatus({ status, setStatus }) {
-    const handleSelect = (e) => {
-        if (confirm(`Are you sure you want to change status to ${e.target.value}`)) {
-            toast.success(`Status changed to ${e.target.value}`, {
-                position: "bottom-right",
-                autoClose: 5000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
 
-            setStatus(e.target.value);
+export default function OrderStatus({ status, setStatus, onChange = false }) {
+    const handleSelect = (e) => {
+        if (onChange) {
+            if (confirm(`Are you sure you want to change status to ${e.target.value}`)) {
+                setStatus(e.target.value);
+            } else {
+                toast.success(`Action has been canceled`, {
+                    position: "bottom-right",
+                    autoClose: 5000,
+                    hideProgressBar: true,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "dark",
+                });
+            }
         } else {
-            toast.success(`Action has been canceled`, {
-                position: "bottom-right",
-                autoClose: 5000,
-                hideProgressBar: true,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-            });
+            setStatus(e.target.value);
         }
     }
 
@@ -44,7 +38,6 @@ export default function OrderStatus({ status, setStatus }) {
                 <option value="Order Completed">Order Completed</option>
                 <option value="Order Canceled">Order Canceled</option>
             </select>
-            <ToastContainer />
         </>
     )
 }

@@ -8,7 +8,7 @@ import { theme } from '../../../../../assets/theme';
 import UserContext from '../../../../../context/UserContext';
 import SiteContext from '../../../../../context/SiteContext';
 // API & Functions
-import { edit, remove } from '../../../../../api/product';
+import { edit, remove } from '../../../../../api/order';
 import OrderStatus from './OrderStatus';
 
 
@@ -25,17 +25,17 @@ export default function Order({ data, setOrder }) {
     const handleSave = () => {
         const newData = {
             id: data.id,
-            name,
-            description,
-            image: "",
-            quantity,
-            price
+            id_user: data.id_user,
+            products: data.products,
+            total: data.total,
+            payment: data.payment,
+            status
         }
 
         edit(user.logged, data.id, newData)
             .then(res => {
                 if (res !== 1) {
-                    toast.error(`Product ${data.id} can't be saved`, {
+                    toast.error(`Order ${data.id} can't be saved`, {
                         position: "bottom-right",
                         autoClose: 5000,
                         hideProgressBar: true,
@@ -45,8 +45,8 @@ export default function Order({ data, setOrder }) {
                         progress: undefined,
                         theme: "dark",
                     });
-                } else {
-                    toast.success(`Product ${data.id} has been successfully saved`, {
+                } else if (res === 1) {
+                    toast.success(`Order ${data.id} has been successfully saved`, {
                         position: "bottom-right",
                         autoClose: 5000,
                         hideProgressBar: true,
@@ -59,7 +59,7 @@ export default function Order({ data, setOrder }) {
                 }
             });
 
-            site.setReload(Math.random())
+        site.setReload(Math.random());
     }
 
     const handleRemove = () => {
@@ -67,7 +67,7 @@ export default function Order({ data, setOrder }) {
             remove(user.logged, data.id)
                 .then(res => {
                     if (res !== 1) {
-                        toast.error(`Product ${data.id} can't be removed`, {
+                        toast.error(`Order ${data.id} can't be removed`, {
                             position: "bottom-right",
                             autoClose: 5000,
                             hideProgressBar: true,
@@ -78,7 +78,7 @@ export default function Order({ data, setOrder }) {
                             theme: "dark",
                         });
                     } else {
-                        toast.warning(`Product ${data.id} has been successfully removed`, {
+                        toast.warning(`Order ${data.id} has been successfully removed`, {
                             position: "bottom-right",
                             autoClose: 5000,
                             hideProgressBar: true,
@@ -103,8 +103,8 @@ export default function Order({ data, setOrder }) {
             });
         }
 
-            site.setReload(Math.random())
-    }    
+        site.setReload(Math.random())
+    }
 
 
     const handleView = () => {
@@ -122,7 +122,7 @@ export default function Order({ data, setOrder }) {
     // Render
     return (
         <OrderStyled>
-            <form onSubmit={(e) => event.preventDefault()}>
+            <form onSubmit={(e) => e.preventDefault()}>
                 <div>
                     {data.id}
                 </div>
