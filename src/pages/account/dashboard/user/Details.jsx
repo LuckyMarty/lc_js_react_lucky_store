@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router';
 // Components
 import Messages from '../../../../components/reusable/Messages';
 // Style
@@ -10,12 +11,13 @@ import FormLayout from '../../../../layout/page/authentification/FormLayout';
 import UserContext from '../../../../context/UserContext';
 import SiteContext from '../../../../context/SiteContext';
 // API & Functions
-import { setLocalStorage } from '../../../../utils/localStorage';
-import { edit } from '../../../../api/user';
+import { getLocalStorage, setLocalStorage } from '../../../../utils/localStorage';
+import { edit, remove } from '../../../../api/user';
 
 
 export default function Details({ data, token }) {
-    // Init
+    // States
+    const navigate = useNavigate();
     // → Context
     const user = useContext(UserContext);
     const site = useContext(SiteContext);
@@ -28,7 +30,7 @@ export default function Details({ data, token }) {
     const [email, setEmail] = useState(data.email);
 
 
-    // Functions
+    // Handler
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -56,6 +58,33 @@ export default function Details({ data, token }) {
     }
 
 
+    const handleDelete = (event) => {
+        event.preventDefault();
+
+        remove(token, getLocalStorage('user_id'), email)
+            .then(data => {
+                if (data?.error) {
+                    // setErrors(data)
+                    console.log(data)
+                }
+
+                else {
+                    setErrors(false);
+                    user.setLogged(false);
+                    user.setIsAdmin(false);
+
+                    setLocalStorage('user_id', "");
+                    setLocalStorage('access_token', null);
+                    setLocalStorage('isAdmin', false);
+
+                    navigate('/sign-in');
+                    
+                    site.setReload(Math.random());
+                }
+            });
+    }
+
+
     // Render
     return (
         <DetailsStyled>
@@ -77,6 +106,7 @@ export default function Details({ data, token }) {
                     </div>
 
                     <input type="submit" value="Save" />
+                    <input type="button" value="Delete My Acccount" onClick={e => handleDelete(e)} />
                 </form>
             </FormLayout>
         </DetailsStyled>
@@ -90,6 +120,13 @@ const DetailsStyled = styled.main`
 
     input[type="submit"] {
         float: inherit;
+    }
+    
+    input[type="button"] {
+        border: none;
+        padding: 12px;
+        margin-left: 25px;
+        background-color: red;
     }
   }
 `;

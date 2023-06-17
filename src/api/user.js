@@ -49,6 +49,25 @@ export async function edit(token, type, newData) {
 }
 
 
+export async function remove(token, id, email) {
+    const response = await fetch(
+        `http://localhost:3000/api/user/`,
+        {
+            method: 'DELETE',
+            headers: {
+                'content-type': 'application/json',
+                'Authorization': `Bearer ${token}`,
+            },
+            body: JSON.stringify({
+                id,
+                email
+            })
+        })
+    const data = await response.json()
+    return Promise.resolve(data);
+}
+
+
 export async function signup(firstname, lastname, email, password) {
     const response = await fetch(
         'http://localhost:3000/api/user/signup',

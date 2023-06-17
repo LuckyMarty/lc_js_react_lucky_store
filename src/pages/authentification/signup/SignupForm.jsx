@@ -44,6 +44,9 @@ export default function SignupForm({ setErrors }) {
                     }
                 });
 
+        } else {
+            setErrors({error: "The passwords that you entered are not identical to each other"})
+            setSuccess(false);
         }
     }
 
@@ -87,7 +90,7 @@ export default function SignupForm({ setErrors }) {
                         </div>
 
                         <div>
-                            <label htmlFor="confirmpassword">Password</label>
+                            <label htmlFor="confirmpassword">Confirm Password</label>
                             <input type="password" name="confirmpassword" id="confirmpassword" required
                                 value={confirmPassword}
                                 onChange={(event) => setConfirmPassword(event.target.value)}
