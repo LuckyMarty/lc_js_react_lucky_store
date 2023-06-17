@@ -6,6 +6,7 @@ import { getOrderById } from '../../../../../api/order';
 import { theme } from '../../../../../assets/theme';
 import ProductList from './ProductList';
 import { formatPrice } from '../../../../../utils/functions';
+import OrderStatus from './OrderStatus';
 // Layout
 // Context
 // API & Functions
@@ -13,6 +14,7 @@ import { formatPrice } from '../../../../../utils/functions';
 export default function OrderView({ order, back }) {
 
     const [orderData, setOrderData] = useState()
+    const [status, setStatus] = useState()
 
 
     // Handler
@@ -29,8 +31,9 @@ export default function OrderView({ order, back }) {
 
             <div className="order-info">
                 <div className="left">
-                    {orderData?.payment} <br />
-                    {orderData?.status}
+                    <b>Order</b>: n°{orderData?.id} <br />
+                    <b>Payment Type</b>: {orderData?.payment} <br />
+                    <b>Status</b>: <OrderStatus status={status} setStatus={setStatus} />
                 </div>
 
                 <div className="right">
@@ -59,8 +62,8 @@ export default function OrderView({ order, back }) {
                 <div></div>
                 <div></div>
                 <div></div>
-                <div>Grand Total</div>
-                <div>{orderData?.total} €</div>
+                <div><b>Grand Total</b></div>
+                <div><b>{orderData?.total} €</b></div>
             </div>
         </OrderViewStyled>
     )
