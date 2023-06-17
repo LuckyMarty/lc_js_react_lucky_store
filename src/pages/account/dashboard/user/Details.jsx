@@ -28,6 +28,7 @@ export default function Details({ data, token }) {
     const [firstname, setFirstname] = useState(data.firstname);
     const [lastname, setLastname] = useState(data.lastname);
     const [email, setEmail] = useState(data.email);
+    const [password, setPassword] = useState()
 
 
     // Handler
@@ -37,7 +38,8 @@ export default function Details({ data, token }) {
         const newData = {
             firstname,
             lastname,
-            email
+            email,
+            password
         }
 
         edit(token, 'details', newData)
@@ -96,13 +98,20 @@ export default function Details({ data, token }) {
                         <label htmlFor="firstname">First Name</label>
                         <input type="text" name='firstname' id='firstname' value={firstname} onChange={e => setFirstname(e.target.value)} />
                     </div>
+
                     <div>
                         <label htmlFor="lastname">Last Name</label>
                         <input type="text" name='lastname' id='lastname' value={lastname} onChange={e => setLastname(e.target.value)} />
                     </div>
+
                     <div>
                         <label htmlFor="email">Email</label>
                         <input type="text" name='email' id='email' value={email} onChange={e => setEmail(e.target.value)} />
+                    </div>
+                    
+                    <div>
+                        <label htmlFor="password">Password</label>
+                        <input type="password" name='password' id='password' value={password} onChange={e => setPassword(e.target.value)} />
                     </div>
 
                     <input type="submit" value="Save" />

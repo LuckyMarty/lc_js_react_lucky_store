@@ -1,10 +1,10 @@
-#Documentation
+# Documentation
 
 ## Access
 
 Admin
 
-```JS
+```HTML
 email:      admin@admin.admin
 password:   admin
 ```

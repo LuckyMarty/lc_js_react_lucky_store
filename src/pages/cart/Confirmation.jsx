@@ -2,6 +2,6 @@ import React from 'react'
 
 export default function Confirmation() {
   return (
-    <div>Confirmation</div>
+    <div>Thank you for your order</div>
   )
 }
