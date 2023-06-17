@@ -28,7 +28,6 @@ export default function Products() {
 
     const headers = ["ID", "Title", "Description", "Quantity", "Price", ""];
 
-    console.log(headers.length);
 
     // Render
     return (

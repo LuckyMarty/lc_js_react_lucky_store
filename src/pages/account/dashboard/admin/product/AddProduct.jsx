@@ -39,7 +39,6 @@ export default function AddProduct() {
 
     add(user.logged, newData)
       .then(res => {
-        console.log(res);
         if (res.error) {
           toast.error(res.error, {
             position: "bottom-right",

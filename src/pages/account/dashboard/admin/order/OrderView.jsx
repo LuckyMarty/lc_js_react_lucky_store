@@ -25,7 +25,7 @@ export default function OrderView({ order, back, admin }) {
 
     // Handler
     useEffect(() => {
-        getOrderById(order).then(data => {
+        getOrderById(user.logged, order).then(data => {
             setOrderData(data);
         });
 

@@ -1,4 +1,9 @@
-import React from 'react'
+import React from 'react';
+// Components
+// Style
+// Layout
+// Context
+// API & Functions  
 import { styled } from 'styled-components';
 import { theme } from '../../../assets/theme';
 import { Link } from 'react-router-dom';
