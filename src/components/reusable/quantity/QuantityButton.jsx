@@ -1,12 +1,10 @@
-import React from 'react'
+import React from 'react';
+// Style
 import { styled } from 'styled-components';
 
-export default function QuantityButton(
-    {
-        label,
-        onClick
-    }
-) {
+
+export default function QuantityButton({ label, onClick }) {
+    // Render
     return (
         <QuantityButtonStyled
             onClick={onClick}>

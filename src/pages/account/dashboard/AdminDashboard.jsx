@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 // Components
+import AdminOrderDashboard from './admin/order/AdminOrderDashboard';
 import Dashboard from './Dashboard'
 import Logout from './components/Logout';
 import ProductDashboard from './admin/product/ProductDashboard';
@@ -14,7 +15,8 @@ export default function AdminDashboard() {
     // States
     const tabs = [
         ["", `This is your Admin Dashboard!`],
-        ["Products", <ProductDashboard />]
+        ["Products", <ProductDashboard />],
+        ["Orders", <AdminOrderDashboard />]
     ];
 
 

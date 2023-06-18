@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 // Components
 import CartProductList from './CartProductList';
 import Total from './Total';
@@ -28,41 +29,51 @@ export default function Cart() {
         totalPrice += product.cartquantity * product.price
       });
       setTotal(totalPrice);
-    } 
+    }
   }, [site.reload])
 
 
   // Render
   return (
     <CartStyled>
-      <div className="left">
+      {
+        site.cart?.length !== 0 ? (
+        <>
+          <div className="left">
 
-        <h2>Cart</h2>
+            <h2>Cart</h2>
 
-        <div className='header'>
-          <div>Product</div>
-          <div></div>
-          <div>Quantity</div>
-          <div>Price</div>
-        </div>
+            <div className='header'>
+              <div>Product</div>
+              <div></div>
+              <div>Quantity</div>
+              <div>Unit Price</div>
+              <div>Total Price</div>
+            </div>
 
-        {
-          site.cart?.map((product) => (
-            <CartProductList
-              key={product.id}
-              data={product}
-              reload={site.setReload}
+            {
+              site.cart?.map((product) => (
+                <CartProductList
+                  key={product.id}
+                  data={product}
+                  reload={site.setReload}
+                />
+              ))
+            }
+          </div>
+
+          <div className="right">
+            <Total
+              subtotal={formatPrice(total)}
+              total={formatPrice(total)}
             />
-          ))
-        }
-      </div>
+          </div>
+        </>
+        ) : (
+          <div className='empty'>There is no product in cart ... go to <Link to={"/products"} >Shop</Link></div>
+        )
+      }
 
-      <div className="right">
-        <Total 
-          subtotal={formatPrice(total)} 
-          total={formatPrice(total)} 
-        />
-      </div>
     </CartStyled>
   )
 }
@@ -80,7 +91,7 @@ const CartStyled = styled.main`
 
       .header {
         display: grid;
-        grid-template-columns: 75px 2fr 1fr 1fr;
+        grid-template-columns: 75px 2fr 1fr 1fr 1fr;
         column-gap: 25px;
         align-items: center;
 
@@ -95,5 +106,9 @@ const CartStyled = styled.main`
         }
       }
     }
+  }
+
+  .empty {
+    text-align: center;
   }
 `;

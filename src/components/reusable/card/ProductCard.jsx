@@ -1,24 +1,31 @@
-import React, { useContext } from 'react'
+import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
+// Style
 import { styled } from 'styled-components';
 import { theme } from '../../../assets/theme';
-import { Link } from 'react-router-dom';
-import { addToCart } from '../../../utils/functions';
+// Context
 import SiteContext from '../../../context/SiteContext';
+// API & Functions  
+import { addToCart } from '../../../utils/functions';
+
 
 export default function ProductCard({ data }) {
+    // States
     const site = useContext(SiteContext);
 
 
+    // Hanlder
     const handleAddToCart = (item) => {
         addToCart(site, item, 1);
     }
 
+
+    // Render
     return (
         <ProductCardStyled>
             <div className='header'>
                 <Link to={`/products/${data.id}-${data.name}`}>
-                    {/* <img src={`https://picsum.photos/id/${index * 4}/500/500`} /> */}
-                    <img src={`https://source.unsplash.com/random/400x400/?img=${data.id}`} />
+                    <img src={data?.image ? data?.image : `https://source.unsplash.com/random/800x800/?img=${data?.id}`} />
                 </Link>
             </div>
 
@@ -89,7 +96,7 @@ const ProductCardStyled = styled.article`
                         cursor: pointer;
 
                         &:hover {
-                            background-color: ${theme.colors.primary_burger};
+                            background-color: ${theme.colors.primary};
                         }
                     }
                 }

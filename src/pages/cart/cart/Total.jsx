@@ -1,13 +1,54 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
+import React, { useContext } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+// Style
 import { styled } from 'styled-components';
 import { theme } from '../../../assets/theme';
+// Context
+import UserContext from '../../../context/UserContext';
+import SiteContext from '../../../context/SiteContext';
+// API & Functions  
+import { getLocalStorage, setLocalStorage } from '../../../utils/localStorage';
+import { add } from '../../../api/order';
+
 
 export default function Total({
     subtotal,
     shipping,
     total
 }) {
+    // States
+    const user = useContext(UserContext);
+    const site = useContext(SiteContext);
+    const navigate = useNavigate();
+
+
+    // Handler
+    const handleBuy = () => {
+        const newData = {
+            id_user: getLocalStorage("user_id"),
+            products: JSON.stringify(site.cart),
+            total,
+            payment: "CB",
+            date: new Intl.DateTimeFormat('en-US', { dateStyle: 'full', timeStyle: 'short', timeZone: 'Europe/Paris' }).format(new Date())
+        }
+
+        add(user.logged, newData)
+            .then(res => {
+                if (res !== 1) {
+                    alert("Something went wrong...");
+                } else if (res === 1) {
+                    site.setCart([]);
+                    setLocalStorage("inCart", []);
+                    site.setReload(Math.random());
+                    navigate("/confirmation");        
+                }
+            });
+
+        site.setReload(Math.random());
+    }
+
+
+    // Render
     return (
         <TotalStyled>
 
@@ -40,7 +81,13 @@ export default function Total({
                 }
             </div>
 
-            <Link>Checkout Now</Link>
+            {
+                user.logged ? (
+                    <a onClick={() => handleBuy()}>Checkout Now</a>
+                ) : (
+                    <Link to={"/sign-in"} >Login</Link>
+                )
+            }
 
         </TotalStyled>
     )
@@ -85,5 +132,6 @@ const TotalStyled = styled.div`
       color: ${theme.colors.background_white};
       text-decoration: none;
       text-align: center;
+      cursor: pointer;
     }
 `;

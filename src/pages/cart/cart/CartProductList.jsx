@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 // Components
-import Quantity from '../../../components/reusable/quantity/Quantity'
+import Quantity from '../../../components/reusable/quantity/Quantity';
 // Style
 import { styled } from 'styled-components';
 import { theme } from '../../../assets/theme';
@@ -26,6 +26,8 @@ export default function CartProductList({ data, reload }) {
         site.setReload(newList);
     }
 
+
+    // Hook
     useEffect(() => {
         updateCartQuantity(site, data, quantity);
         reload(quantity);
@@ -37,8 +39,7 @@ export default function CartProductList({ data, reload }) {
         <CartProductListStyled>
             <div className='image'>
                 <Link to={`/products/${data.id}-${data.name}`}>
-                    {/* <img src={`https://picsum.photos/id/${index * 4}/500/500`} /> */}
-                    <img src={`https://source.unsplash.com/random/400x400/?img=${data.id}`} />
+                    <img src={ data.image ? data.image : `https://source.unsplash.com/random/400x400/?img=${data.id}`} />
                 </Link>
             </div>
 
@@ -52,6 +53,11 @@ export default function CartProductList({ data, reload }) {
                 <div className='delete' onClick={() => handleRemove(data.id)}>delete</div>
             </div>
 
+
+            <div className="unique_price">
+                {formatPrice(data.price)} €
+            </div>
+
             <div className="price">
                 {formatPrice(quantity * data.price)} €
             </div>
@@ -62,7 +68,7 @@ export default function CartProductList({ data, reload }) {
 
 const CartProductListStyled = styled.div`
     display: grid;
-    grid-template-columns: 75px 2fr 1fr 1fr;
+    grid-template-columns: 75px 2fr 1fr 1fr 1fr;
     column-gap: 25px;
 
     

@@ -1,12 +1,17 @@
-import React from 'react'
-import { theme } from '../../assets/theme';
-import { styled } from 'styled-components';
-import search_icon from './assets/search.png'
+import React from 'react';
+// Components
 import MainMenu from './MainMenu';
 import MainMenuIcons from './MainMenuIcons';
 import Logo from '../../components/reusable/Logo';
+// Style
+import { styled } from 'styled-components';
+import { theme } from '../../assets/theme';
+// Assets
+import search_icon from './assets/search.png';
+
 
 export default function Header() {
+    // Render
     return (
         <HeaderStyled>
             <Logo />
@@ -18,8 +23,6 @@ export default function Header() {
 
             <MainMenu />
             <MainMenuIcons />
-
-            
         </HeaderStyled>
     )
 }

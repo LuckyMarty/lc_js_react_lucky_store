@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 // Style
 import { styled } from 'styled-components';
 import { theme } from '../../../assets/theme';
@@ -8,6 +8,7 @@ export default function AuthLayout({
     errors,
     children
 }) {
+    // Render
     return (
         <AuthLayoutStyled>
             <h2>{title}</h2>

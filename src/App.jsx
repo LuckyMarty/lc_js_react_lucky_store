@@ -1,31 +1,34 @@
-import { useState } from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-// Components
-import Header from './layout/header/Header'
-import Home from './pages/home/Home'
+import { useState } from 'react';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+// → Home
+import Home from './pages/home/Home';
 // → Product
-import Products from './pages/products/Products'
-import Product from './pages/products/product/Product'
+import Products from './pages/products/Products';
+import Product from './pages/products/product/Product';
 // → Auth
-import Login from './pages/authentification/login/Login'
-import Signup from './pages/authentification/signup/Signup'
-//  → Dashboard
-import UserDashboard from './pages/account/dashboard/UserDashboard'
-import AdminDashboard from './pages/account/dashboard/AdminDashboard'
+import Login from './pages/authentification/login/Login';
+import Signup from './pages/authentification/signup/Signup';
+// → Dashboard
+import UserDashboard from './pages/account/dashboard/UserDashboard';
+import AdminDashboard from './pages/account/dashboard/AdminDashboard';
 // → Cart
-import Cart from './pages/cart/cart/Cart'
+import Cart from './pages/cart/cart/Cart';
+// Layout
+import Header from './layout/header/Header';
+import Footer from './layout/footer/footer';
 // Style
-import './assets/fonts/fonts.css'
-import './App.css'
+import './assets/fonts/fonts.css';
+import './App.css';
 // Context
-import UserContext from './context/UserContext'
-import SiteContext from './context/SiteContext'
+import UserContext from './context/UserContext';
+import SiteContext from './context/SiteContext';
 // API & Functions
-import { getLocalStorage } from './utils/localStorage'
+import { getLocalStorage } from './utils/localStorage';
 // → Routes
-import PrivateRoutes from './utils/PrivateRoutes'
-import AdminRoutes from './utils/AdminRoutes'
-import LoggedRoutes from './utils/LoggedRoutes'
+import PrivateRoutes from './utils/PrivateRoutes';
+import AdminRoutes from './utils/AdminRoutes';
+import LoggedRoutes from './utils/LoggedRoutes';
+import Confirmation from './pages/cart/Confirmation';
 
 
 // Local Data
@@ -78,6 +81,7 @@ function App() {
             {/* User Logged */}
             <Route element={<PrivateRoutes />}>
               <Route path='/account' element={<UserDashboard />} />
+              <Route path='/confirmation' element={<Confirmation />} />
             </Route>
 
             {/* Admin Panel */}
@@ -88,6 +92,9 @@ function App() {
             {/* Cart */}
             <Route path='/cart' element={<Cart />} />
           </Routes>
+
+          <Footer />
+
         </UserContext.Provider>
       </SiteContext.Provider>
     </BrowserRouter>

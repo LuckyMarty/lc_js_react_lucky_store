@@ -1,17 +1,25 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { styled } from 'styled-components';
-import user_icon from './assets/user.png'
-import shoppingBag_icon from './assets/shopping-bag.png'
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+// Style
+import { styled } from 'styled-components';
+// Context
 import UserContext from '../../context/UserContext';
 import SiteContext from '../../context/SiteContext';
+// Assets
+import user_icon from './assets/user.png'
+import shoppingBag_icon from './assets/shopping-bag.png'
+
 
 export default function MainMenuIcons() {
+    // States
+    // → Context
     const user = useContext(UserContext);   
     const site = useContext(SiteContext);   
-
+    // → Data 
     const [inCartTotalQuantity, setInCartTotalQuantity] = useState(false);
 
+
+    // Hook
     useEffect(() => {
         let totalQuantity = 0;
         if (site.cart !== null) {
@@ -23,6 +31,7 @@ export default function MainMenuIcons() {
     }, [site.reload])
     
 
+    // Render
     return (
         <MainMenuIconsStyled>
             <ul>

@@ -1,14 +1,23 @@
-import React from 'react'
-import { styled } from 'styled-components';
-import useProduct from '../../hooks/useProduct';
+import React from 'react';
+// Components
 import ProductCard from '../../components/reusable/card/ProductCard';
+// Style
+import { styled } from 'styled-components';
+// Layout
 import ContainerWithLeftSideBar from '../../layout/ContainerWithLeftSideBar';
+// Hooks
+import useProduct from '../../hooks/useProduct';
+
 
 export default function Products() {
+    // States
     const products = useProduct();
+
 
     document.title = "Products - Lucky Store";
 
+
+    // Render
     return (
         <ContainerWithLeftSideBar>
             <ProductsStyled>

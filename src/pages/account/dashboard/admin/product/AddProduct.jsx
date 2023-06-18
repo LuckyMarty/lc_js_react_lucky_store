@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// Components
 // Style
 import { styled } from 'styled-components';
 // Layout
@@ -32,14 +31,13 @@ export default function AddProduct() {
     const newData = {
       name,
       description,
-      image: "",
+      image,
       quantity,
       price
     }
 
     add(user.logged, newData)
       .then(res => {
-        console.log(res);
         if (res.error) {
           toast.error(res.error, {
             position: "bottom-right",
@@ -82,10 +80,10 @@ export default function AddProduct() {
             <textarea name='description' id='description' value={description} onChange={e => setDescription(e.target.value)} />
           </div>
 
-          {/* <div>
+          <div>
             <label htmlFor="image">Image</label>
             <input type="text" name='image' id='image' value={image} onChange={e => setImage(e.target.value)} />
-          </div> */}
+          </div>
 
           <div>
             <label htmlFor="quantity">Quantity</label>

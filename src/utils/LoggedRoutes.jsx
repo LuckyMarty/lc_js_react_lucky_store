@@ -1,11 +1,14 @@
-import React, { useContext } from 'react'
-import { Navigate, Outlet } from 'react-router-dom'
-import UserContext from '../context/UserContext'
+import React, { useContext } from 'react';
+import { Navigate, Outlet } from 'react-router-dom';
+// Context
+import UserContext from '../context/UserContext';
 
 export default function LoggedRoutes() {
+  // States
   const user = useContext(UserContext);
-  console.log(user.logged);
 
+
+  // Render
   return (
     !user.logged ? <Outlet /> : <Navigate to={"/account"} />
   )

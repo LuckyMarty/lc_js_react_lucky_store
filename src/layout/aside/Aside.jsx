@@ -1,10 +1,13 @@
-import React from 'react'
+import React from 'react';
+// Style
 import { styled } from 'styled-components';
 import { theme } from '../../assets/theme';
+// Assets  
 import { icons } from './assets/icons';
-import Logo from '../../components/reusable/Logo';
+
 
 export default function Aside() {
+    // Render
     return (
         <AsideStyled>
             <h2>Explore</h2>

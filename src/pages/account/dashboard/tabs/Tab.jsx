@@ -4,8 +4,6 @@ import { styled } from 'styled-components';
 import { theme } from '../../../../assets/theme';
 
 
-
-
 export default function Tab({ label, onClick, active }) {
     // Render
     return (

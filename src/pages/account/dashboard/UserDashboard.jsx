@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 // Components
 import Dashboard from './Dashboard'
-import Details from './Details';
+import Details from './user/Details';
 import Logout from './components/Logout';
 // Style
 import { styled } from 'styled-components';
@@ -12,8 +12,7 @@ import SiteContext from '../../../context/SiteContext';
 // API & Functions
 import { getLocalStorage, setLocalStorage } from '../../../utils/localStorage';
 import { data } from '../../../api/user';
-
-
+import Orders from './user/Orders';
 
 
 export default function UserDashboard() {
@@ -28,7 +27,7 @@ export default function UserDashboard() {
     const tabs = [
         ["", `Welcome to your dashboard ${userData.firstname} ${userData.lastname}!`],
         ["Details", <Details data={userData} token={token} />],
-        ["Orders", "Orders"],
+        ["Orders", <Orders />],
         ["Settings", "Settings"]
     ];
 

@@ -1,13 +1,12 @@
-import React from 'react'
+import React from 'react';
+// Style
 import { styled } from 'styled-components';
 import { theme } from '../../../assets/theme';
-import { Link } from 'react-router-dom';
 
-export default function Button({
-    label,
-    onClick
-}) {
+
+export default function Button({ label, onClick }) {
     return (
+        // Render
         <ButtonStyled onClick={onClick}>
             {label}
         </ButtonStyled>
