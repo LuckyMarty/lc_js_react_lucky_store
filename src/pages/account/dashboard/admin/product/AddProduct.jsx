@@ -31,7 +31,7 @@ export default function AddProduct() {
     const newData = {
       name,
       description,
-      image: "",
+      image,
       quantity,
       price
     }
@@ -80,10 +80,10 @@ export default function AddProduct() {
             <textarea name='description' id='description' value={description} onChange={e => setDescription(e.target.value)} />
           </div>
 
-          {/* <div>
+          <div>
             <label htmlFor="image">Image</label>
             <input type="text" name='image' id='image' value={image} onChange={e => setImage(e.target.value)} />
-          </div> */}
+          </div>
 
           <div>
             <label htmlFor="quantity">Quantity</label>

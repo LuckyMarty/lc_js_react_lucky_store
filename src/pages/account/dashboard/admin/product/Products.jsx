@@ -26,14 +26,13 @@ export default function Products() {
         })
     }, [site.reload]);
 
-    const headers = ["ID", "Title", "Description", "Quantity", "Price", ""];
+    const headers = ["ID", "Title", "Description", "Quantity", "Price", "Image", ""];
 
 
     // Render
     return (
         <ProductsStyled>
             <AdminDataList headers={headers}>
-
                 {
                     products.map((product, index) => (
                         <Product key={index} data={product} />

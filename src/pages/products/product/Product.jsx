@@ -37,7 +37,7 @@ export default function Product() {
     return (
         <ProductStyled>
             <div className="left">
-                <img src={`https://source.unsplash.com/random/800x800/?img=${product?.id}`} />
+                <img src={ product?.image ? product?.image : `https://source.unsplash.com/random/800x800/?img=${product?.id}`} />
             </div>
 
             <div className="right">

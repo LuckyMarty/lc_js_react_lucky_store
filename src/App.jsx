@@ -15,6 +15,7 @@ import AdminDashboard from './pages/account/dashboard/AdminDashboard';
 import Cart from './pages/cart/cart/Cart';
 // Layout
 import Header from './layout/header/Header';
+import Footer from './layout/footer/footer';
 // Style
 import './assets/fonts/fonts.css';
 import './App.css';
@@ -91,6 +92,9 @@ function App() {
             {/* Cart */}
             <Route path='/cart' element={<Cart />} />
           </Routes>
+
+          <Footer />
+
         </UserContext.Provider>
       </SiteContext.Provider>
     </BrowserRouter>

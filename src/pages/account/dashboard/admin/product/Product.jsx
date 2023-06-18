@@ -21,6 +21,7 @@ export default function Product({ data }) {
     const [description, setDescription] = useState(data.description);
     const [quantity, setQuantity] = useState(data.quantity);
     const [price, setPrice] = useState(data.price);
+    const [image, setImage] = useState(data.image)
 
 
     // Handler
@@ -29,7 +30,7 @@ export default function Product({ data }) {
             id: data.id,
             name,
             description,
-            image: "",
+            image,
             quantity,
             price
         }
@@ -126,6 +127,11 @@ export default function Product({ data }) {
                 <div>
                     <input type="number" value={price} onChange={(e) => { setPrice(e.target.value) }} min={0} step={0.01} />
                 </div>
+
+                <div>
+                    <input type="text" value={image} onChange={(e) => setImage(e.target.value)} />
+                </div>
+
                 <div>
                     <button className='save' onClick={() => handleSave()} >Save</button>
                     <button className='remove' onClick={() => handleRemove()} >Remove</button>

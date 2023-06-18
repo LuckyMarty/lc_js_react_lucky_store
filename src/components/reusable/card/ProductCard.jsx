@@ -25,8 +25,7 @@ export default function ProductCard({ data }) {
         <ProductCardStyled>
             <div className='header'>
                 <Link to={`/products/${data.id}-${data.name}`}>
-                    {/* <img src={`https://picsum.photos/id/${index * 4}/500/500`} /> */}
-                    <img src={`https://source.unsplash.com/random/400x400/?img=${data.id}`} />
+                    <img src={data?.image ? data?.image : `https://source.unsplash.com/random/800x800/?img=${data?.id}`} />
                 </Link>
             </div>
 

@@ -26,7 +26,7 @@ const AdminDataListStyled = styled.div`
     .header,
     form {
         display: grid;
-        grid-template-columns: 1fr repeat(${props => props.columns - 1}, 4fr);
+        grid-template-columns: 1fr repeat(${props => props.columns - 1}, minmax(0, 4fr));
         gap: 25px;
         padding: 14px;
         border-bottom: 1px solid ${theme.colors.dark};

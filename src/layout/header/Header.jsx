@@ -7,7 +7,7 @@ import Logo from '../../components/reusable/Logo';
 import { styled } from 'styled-components';
 import { theme } from '../../assets/theme';
 // Assets
-import search_icon from './assets/search.png'
+import search_icon from './assets/search.png';
 
 
 export default function Header() {
