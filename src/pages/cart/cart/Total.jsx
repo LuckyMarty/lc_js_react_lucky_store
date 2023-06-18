@@ -39,6 +39,7 @@ export default function Total({
                 } else if (res === 1) {
                     site.setCart([]);
                     setLocalStorage("inCart", []);
+                    site.setReload(Math.random());
                     navigate("/confirmation");        
                 }
             });
