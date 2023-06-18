@@ -96,7 +96,7 @@ const ProductCardStyled = styled.article`
                         cursor: pointer;
 
                         &:hover {
-                            background-color: ${theme.colors.primary_burger};
+                            background-color: ${theme.colors.primary};
                         }
                     }
                 }

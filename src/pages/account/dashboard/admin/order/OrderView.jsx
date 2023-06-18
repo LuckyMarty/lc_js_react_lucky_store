@@ -130,6 +130,17 @@ export default function OrderView({ order, back, admin }) {
 
 
 const OrderViewStyled = styled.div`
+    button {
+        padding: 8px 16px;
+        background-color: ${theme.colors.blue};
+        color: white;
+        border: none;
+        
+        &:hover {
+            background-color: ${theme.colors.orange};
+        }
+    }
+
     .order {
         &-info {
             display: grid;
