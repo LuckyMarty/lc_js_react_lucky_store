@@ -2,9 +2,5 @@
 
 ## Access
 
-Admin
-
-```HTML
-email:      admin@admin.admin
-password:   admin
-```
+| Type | Email | Password |
+| `Admin` | `admin@admin.admin` | `admin` |
