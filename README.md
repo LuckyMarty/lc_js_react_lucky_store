@@ -14,7 +14,7 @@ To deploy this project run
   npm i
 ```
 
-then \
+then
 ```bash
   npm run dev
 ```
